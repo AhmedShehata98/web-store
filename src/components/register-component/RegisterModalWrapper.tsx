@@ -11,6 +11,7 @@ const RegisterModalWrapper = () => {
   const [currentModal, setCurrentModal] = useState<"LOGIN" | "SIGN_UP">(
     "LOGIN"
   );
+
   return (
     <div
       className={`fixed top-0 left-0 inset-0 z-30 flex items-center justify-center bg-slate-700 bg-opacity-40 ${clsx(

@@ -32,6 +32,9 @@ const config: Config = {
           },
         },
       },
+      screens: {
+        tablet: "992px",
+      },
       transitionProperty: {
         width: "width",
         height: "height",
