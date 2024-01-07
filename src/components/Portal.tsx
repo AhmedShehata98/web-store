@@ -1,5 +1,5 @@
-import React, { useEffect, useState, ReactNode } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useState, ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 function Portal({ children, id }: { children: ReactNode; id: string }) {
   const [isMounted, setIsMounted] = useState(false);
