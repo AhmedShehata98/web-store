@@ -1,13 +1,23 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useRef } from 'react';
 import Logo from '../Logo';
 import clsx from 'clsx';
+import { useOnClickOutside } from 'usehooks-ts';
+import { useSetRecoilState } from 'recoil';
+import { registerModalAtom } from '@/atoms/register-modal';
 
 type Props = HTMLAttributes<HTMLFormElement> & {
   setCurrentModal: React.Dispatch<React.SetStateAction<'LOGIN' | 'SIGN_UP'>>;
 };
 const Login = ({ setCurrentModal, className, ...rest }: Props) => {
+  const setRegisterModalAtom = useSetRecoilState(registerModalAtom);
+
+  const modalRef = useRef(null);
+
+  useOnClickOutside(modalRef, () => setRegisterModalAtom({ isShown: false }));
+
   return (
     <form
+      ref={modalRef}
       className={`w-1/4 max-md:w-full max-md:mx-5 max-tablet:w-4/5 flex flex-col items-center justify-center shadow-lg rounded-md dark:bg-dark-primary-200 py-6 px-14 max-md:px-8 ${clsx(
         className,
       )}`}

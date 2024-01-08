@@ -1,3 +1,4 @@
+'use client';
 import SwiperSlider from './SwiperSlider';
 import { SLIDE_LIST } from 'local-constants';
 

@@ -26,15 +26,9 @@ const SwiperSlider = ({ data, isFetched }: Props) => {
     <Swiper
       spaceBetween={18}
       slidesPerView={1.6}
-      onSlideChange={(swiper) => {
-        console.log(swiper);
-        console.log('slide changed');
-      }}
-      onSwiper={(swiper) => {
-        console.log(swiper);
-      }}
       pagination={true}
       mousewheel={true}
+      loop={true}
       autoplay={{ delay: 5000, waitForTransition: true }}
       className='w-full h-full flex overflow-y-hidden'
       modules={[Pagination, A11y, Mousewheel, Autoplay, EffectFlip]}
@@ -43,6 +37,8 @@ const SwiperSlider = ({ data, isFetched }: Props) => {
         data.map((slide, idx) => (
           <SwiperSlide key={idx} className='relative overflow-hidden rounded-xl shadow-lg'>
             <Image
+              width={250}
+              height={250}
               src={slide.image}
               alt={`slide-${idx}`}
               className='w-full max-h-full object-cover object-center overflow-hidden'
