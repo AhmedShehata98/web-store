@@ -1,16 +1,14 @@
-import React, { HTMLAttributes, forwardRef } from "react";
+import React, { HTMLAttributes } from 'react';
 
 type Props = HTMLAttributes<HTMLHeadingElement> & {
   categoryName: string;
 };
-const ItemCategory = forwardRef<HTMLHeadingElement, Props>(
-  ({ categoryName, ...rest }, ref) => {
-    return (
-      <small ref={ref} {...rest} className="text-slate-300 capitalize">
-        {categoryName}
-      </small>
-    );
-  }
-);
+const ItemCategory = ({ categoryName, ...rest }: Props) => {
+  return (
+    <small {...rest} className='text-slate-300 capitalize'>
+      {categoryName}
+    </small>
+  );
+};
 
 export default ItemCategory;

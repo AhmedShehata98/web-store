@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import PrimaryLayout from "@/layout/primary-layout/PrimaryLayout";
 import RecoilWrapper from "@/lib/RecoilWrapper";
 import RegisterModalWrapper from "@/components/register-component/RegisterModalWrapper";
