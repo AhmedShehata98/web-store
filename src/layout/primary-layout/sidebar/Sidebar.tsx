@@ -10,7 +10,7 @@ import { TbCategory } from "react-icons/tb";
 const Sidebar = () => {
   const pathname = usePathname();
   return (
-    <aside className="fixed z-20 w-24 h-dvh flex flex-col items-start justify-start dark:bg-dark-primary-100">
+    <aside className="fixed z-20 w-24 h-dvh flex flex-col items-start justify-start dark:bg-dark-primary-100 max-tablet:hidden">
       <ul className="w-full grid grid-flow-row gap-2 p-2">
         <Sidebar.SidebarLink
           href={"/"}
