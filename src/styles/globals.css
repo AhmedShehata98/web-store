@@ -14,7 +14,19 @@
 @tailwind components;
 @layer components {
   .app-container {
-    @apply max-w-[93%] w-[93%] mx-auto px-4 max-md:w-full;
+    @apply max-w-[93%] w-[93%] mx-auto px-4 max-md:w-full max-md:max-w-full;
+  }
+  .main-app {
+    @apply w-full h-dvh max-h-dvh flex flex-col items-start justify-start dark:bg-dark-primary-200;
+  }
+  .section-wrapper {
+    @apply w-full h-dvh max-h-dvh overflow-y-auto flex items-start justify-start max-tablet:mb-24 max-tablet:pb-4;
+  }
+  .side-navigation-menu {
+    @apply fixed z-20 w-24 h-dvh flex flex-col items-start justify-start dark:bg-dark-primary-100 max-tablet:hidden;
+  }
+  .mobile-navigation-bar {
+    @apply fixed bottom-0 translate-y-full w-full z-40 opacity-0 transition-all duration-500 delay-100 dark:bg-dark-primary-100 px-4 py-2 max-tablet:translate-y-0 max-tablet:opacity-100;
   }
 }
 @tailwind utilities;

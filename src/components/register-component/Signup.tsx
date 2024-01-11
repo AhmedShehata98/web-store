@@ -4,9 +4,10 @@ import Logo from '../Logo';
 import { useSetRecoilState } from 'recoil';
 import { registerModalAtom } from '@/atoms/register-modal';
 import { useOnClickOutside } from 'usehooks-ts';
+import { ModalTargetType } from './RegisterModalWrapper';
 
 type Props = HTMLAttributes<HTMLFormElement> & {
-  setCurrentModal: React.Dispatch<React.SetStateAction<'LOGIN' | 'SIGN_UP'>>;
+  setCurrentModal: React.Dispatch<React.SetStateAction<ModalTargetType>>;
 };
 export const Signup = ({ setCurrentModal, className, ...rest }: Props) => {
   const setRegisterModalAtom = useSetRecoilState(registerModalAtom);

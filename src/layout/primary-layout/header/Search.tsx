@@ -3,7 +3,7 @@ import { IoSearchOutline } from 'react-icons/io5';
 
 const Search = () => {
   return (
-    <div className='relative w-[32rem] flex flex-col items-start justify-start gap-2'>
+    <div className='relative w-[32rem] flex flex-col items-start justify-start gap-2 max-md:order-3 max-md:w-full'>
       <form className='flex items-center w-full shadow rounded-md overflow-hidden justify-center dark:bg-dark-primary-300 mx-3 border-b border-transparent focus-within:border-dark-secondary-200'>
         <input
           type='search'

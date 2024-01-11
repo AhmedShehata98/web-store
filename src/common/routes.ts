@@ -1,3 +1,4 @@
 export const ROUTES_LIST = {
-  app: "/",
+  app: '/',
+  categories: '/categories',
 };

@@ -6,7 +6,7 @@ type Props = HTMLAttributes<HTMLImageElement> & {
 };
 const ItemImage = ({ iconUrl, ...rest }: Props) => {
   return (
-    <figure className='flex items-center justify-center w-28 aspect-square overflow-hidden rounded-md'>
+    <figure className='flex items-center justify-center w-28 max-md:w-16 aspect-square overflow-hidden rounded-md'>
       <Image
         {...rest}
         className='!min-w-full object-cover object-center'

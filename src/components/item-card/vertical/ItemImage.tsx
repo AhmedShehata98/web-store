@@ -29,9 +29,9 @@ const ItemImage = forwardRef<HTMLElement, Props>(function ItemImage({ iconUrl, c
         intersectionImageRef(ref);
       }}
       {...rest}
-      className={`w-full h-52 flex items-center justify-center rounded-t-lg ${clsx(className)}`}
+      className={`w-full h-52 max-md:h-36 flex items-center justify-center rounded-t-lg ${clsx(className)}`}
       style={{
-        backgroundColor: isSuccess ? `${enhanceBackgroundBlackColor(averageColor?.rgba ?? '')}` : 'transparent',
+        backgroundColor: isSuccess ? `${averageColor?.rgba}` : 'transparent',
       }}
     >
       <Image

@@ -7,7 +7,7 @@ const TopFreeAppsWrapper = () => {
   const [appsList] = useState(FREE_APP_LIST);
   return (
     <div className='w-full flex items-start justify-start gap-2 mb-8'>
-      <ul className='w-full grid grid-cols-2 gap-x-7 gap-y-5'>
+      <ul className='w-full grid sm:grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-5'>
         {appsList.map((app) => (
           <ItemCard key={app.id} item={app} />
         ))}
