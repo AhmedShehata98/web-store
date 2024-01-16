@@ -1,16 +1,25 @@
-"use client";
-import React, { useState } from "react";
-import RegisterBtn from "@/components/RegisterBtn";
-import AccountMenuWrapper from "./account-menu/AccountMenuWrapper";
-import Avatar from "@/components/Avatar";
-import { useSetRecoilState } from "recoil";
-import { accountMenuAtom } from "@/atoms/account-menu";
-import { registerModalAtom } from "@/atoms/register-modal";
+'use client';
+import React, { useState } from 'react';
+import RegisterBtn from '@/components/RegisterBtn';
+import AccountMenuWrapper from './account-menu/AccountMenuWrapper';
+import Avatar from '@/components/Avatar';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { accountMenuAtom } from '@/atoms/account-menu';
+import { registerModalAtom } from '@/atoms/register-modal';
+import { useQuery } from '@tanstack/react-query';
+import { getProfileData } from '@/services/user.api';
+import { userDataAtom } from '@/atoms/userData.atom';
 
 function AccountButtonsWrapper() {
-  const [isLoggedIn] = useState(false);
+  const {
+    isLoggedIn,
+    isPendingProfileData,
+    userData: profileData,
+    isSuccessProfileData,
+  } = useRecoilValue(userDataAtom);
   const setShowAccountMenu = useSetRecoilState(accountMenuAtom);
   const setRegisterModalAtom = useSetRecoilState(registerModalAtom);
+
   const handleShowRegisterModal = () => {
     setRegisterModalAtom((curr) => ({ ...curr, isShown: !curr.isShown }));
   };
@@ -23,10 +32,10 @@ function AccountButtonsWrapper() {
       {!isLoggedIn && <RegisterBtn onClick={handleShowRegisterModal} />}
       {isLoggedIn && (
         <Avatar
-          username="ahmed shehata"
-          isLoading={false}
-          isSuccess={true}
-          profileImg={"https://picsum.photos/200"}
+          username={profileData?.fullName || 'N A'}
+          isLoading={isPendingProfileData}
+          isSuccess={isSuccessProfileData}
+          profileImg={profileData?.profileImageUrl!}
           onClick={handleShowAccountMenu}
         />
       )}

@@ -2,18 +2,20 @@ import React, { HTMLAttributes, useRef, useState } from 'react';
 import Logo from '../Logo';
 import clsx from 'clsx';
 import { useOnClickOutside } from 'usehooks-ts';
-import { useSetRecoilState } from 'recoil';
-import { registerModalAtom } from '@/atoms/register-modal';
 import { ModalTargetType } from './RegisterModalWrapper';
 
 type Props = HTMLAttributes<HTMLFormElement> & {
   setCurrentModal: React.Dispatch<React.SetStateAction<ModalTargetType>>;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  closeModal: () => void;
+  error: string;
+  isError: boolean;
+  inPending: boolean;
 };
-const Login = ({ setCurrentModal, className, ...rest }: Props) => {
-  const setRegisterModalAtom = useSetRecoilState(registerModalAtom);
+const Login = ({ onSubmit, closeModal, setCurrentModal, inPending, error, isError, className, ...rest }: Props) => {
   const modalRef = useRef(null);
 
-  useOnClickOutside(modalRef, () => setRegisterModalAtom({ isShown: false }));
+  useOnClickOutside(modalRef, () => closeModal());
 
   return (
     <form
@@ -22,6 +24,7 @@ const Login = ({ setCurrentModal, className, ...rest }: Props) => {
         className,
       )}`}
       {...rest}
+      onSubmit={onSubmit}
     >
       <div className='mt-4'>
         <Logo />
@@ -50,11 +53,26 @@ const Login = ({ setCurrentModal, className, ...rest }: Props) => {
           <small>reset password</small>
         </button>
       </span>
+      <span className='w-full h-2 mt-4'>
+        {isError && <p className='text-red-500 text-center font-semibold text-sm'>{error}</p>}
+      </span>
       <button
         type='submit'
-        className='w-full py-4 text-lg font-bold capitalize rounded-md dark:bg-dark-secondary-200 mt-8 mb-4 hover:brightness-75'
+        className='w-full flex items-center justify-center gap-3 py-4 text-lg font-bold capitalize rounded-md dark:bg-dark-secondary-200 mt-8 mb-4 hover:brightness-75'
+        disabled={inPending}
       >
-        login
+        {inPending ? (
+          <>
+            <span
+              className={
+                'inline-block w-7 h-7 border-4 dark:border-dark-primary-200 dark:border-l-transparent rounded-full animate-spin'
+              }
+            ></span>
+            sending ...
+          </>
+        ) : (
+          'login'
+        )}
       </button>
       <button
         type='button'

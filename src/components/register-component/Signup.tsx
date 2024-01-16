@@ -8,11 +8,15 @@ import { ModalTargetType } from './RegisterModalWrapper';
 
 type Props = HTMLAttributes<HTMLFormElement> & {
   setCurrentModal: React.Dispatch<React.SetStateAction<ModalTargetType>>;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  closeModal: () => void;
+  error: string;
+  inPending: boolean;
+  isError: boolean;
 };
-export const Signup = ({ setCurrentModal, className, ...rest }: Props) => {
-  const setRegisterModalAtom = useSetRecoilState(registerModalAtom);
+export const Signup = ({ setCurrentModal, closeModal, inPending, error, isError, className, ...rest }: Props) => {
   const modalRef = useRef<HTMLFormElement>(null);
-  useOnClickOutside(modalRef, () => setRegisterModalAtom({ isShown: false }));
+  useOnClickOutside(modalRef, () => closeModal());
   return (
     <form
       ref={modalRef}
@@ -61,11 +65,25 @@ export const Signup = ({ setCurrentModal, className, ...rest }: Props) => {
               />
             </span>
             <span className='flex flex-col items-center justify-center'>
+              <span className='w-full h-2 mb-4'>
+                {isError && <p className='text-red-500 text-center font-semibold text-sm'>{error}</p>}
+              </span>
               <button
                 type='submit'
-                className='w-full py-4 text-lg font-bold capitalize rounded-md dark:bg-dark-secondary-200 mt-8 mb-4 hover:brightness-75'
+                className='w-full flex items-center justify-center gap-3 py-4 text-lg font-bold capitalize rounded-md dark:bg-dark-secondary-200 mt-8 mb-4 hover:brightness-75'
               >
-                create account
+                {inPending ? (
+                  <>
+                    <span
+                      className={
+                        'inline-block w-7 h-7 border-4 dark:border-dark-primary-200 dark:border-l-transparent rounded-full animate-spin'
+                      }
+                    ></span>
+                    sending ...
+                  </>
+                ) : (
+                  'create account'
+                )}
               </button>
               <button
                 type='button'
@@ -87,7 +105,7 @@ export const Signup = ({ setCurrentModal, className, ...rest }: Props) => {
               type='button'
               className='w-full flex items-center justify-start gap-4 p-3 rounded-md dark:bg-gray-200 mb-4'
             >
-              <Image src={'/google.png'} alt='google' />
+              <Image src={'/google.png'} alt='google' width={40} height={40} />
 
               <p className='text-black text-lg font-medium capitalize leading-3 m-0 p-0'>sign-up with google</p>
             </button>
@@ -95,7 +113,7 @@ export const Signup = ({ setCurrentModal, className, ...rest }: Props) => {
               type='button'
               className='w-full flex items-center justify-start gap-4 p-3 rounded-md dark:bg-slate-200 mb-4'
             >
-              <Image src={'/github.png'} alt='github' />
+              <Image src={'/github.png'} alt='github' width={40} height={40} />
               <p className='text-black text-lg font-medium capitalize leading-3 m-0 p-0'>sign-up with github</p>
             </button>
           </div>
