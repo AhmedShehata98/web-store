@@ -8,7 +8,7 @@ type Props = {
   isSuccess: boolean;
   onClick?: MouseEventHandler;
 };
-function Avatar({ isLoading, isSuccess, profileImg, username }: Props) {
+function Avatar({ isLoading, isSuccess, profileImg, username, onClick }: Props) {
   const getNameChars = (username: string): string => {
     if (username.trim().indexOf(' ') === -1) {
       return username.trim().split(' ')[0].charAt(0).toUpperCase();
@@ -23,7 +23,7 @@ function Avatar({ isLoading, isSuccess, profileImg, username }: Props) {
     }
   };
   return (
-    <button type='button' className='w-12 h-12 flex items-center justify-center'>
+    <button type='button' className='w-12 h-12 flex items-center justify-center' onClick={onClick}>
       {isSuccess && profileImg === null && (
         <div className='w-full h-full flex items-center justify-center rounded-full overflow-hidden dark:bg-dark-secondary-100 dark:text-white font-bold text-xl'>
           {getNameChars(username)}

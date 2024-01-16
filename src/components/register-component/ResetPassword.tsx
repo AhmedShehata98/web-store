@@ -6,14 +6,29 @@ import { useOnClickOutside } from 'usehooks-ts';
 import OtpInput from 'react-otp-input';
 import clsx from 'clsx';
 import Logo from '../Logo';
+import { FaCircleCheck } from 'react-icons/fa6';
 
 type Props = HTMLAttributes<HTMLFormElement> & {
   setCurrentModal: React.Dispatch<React.SetStateAction<ModalTargetType>>;
+  onResetPasswordRequest: (email: string) => Promise<boolean>;
+  closeModal: () => void;
+  onResetPassword: (password: string, otpCode: string) => Promise<void>;
+  isPending: boolean;
+  isSuccess: boolean;
 };
-const ResetPassword = ({ className, setCurrentModal, ...rest }: Props) => {
+const ResetPassword = ({
+  className,
+  setCurrentModal,
+  onResetPasswordRequest,
+  isPending,
+  isSuccess,
+  onResetPassword,
+  ...rest
+}: Props) => {
   const setRegisterModalAtom = useSetRecoilState(registerModalAtom);
   const [otpCode, setOtpCode] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [waitCounter, setWaitCounter] = useState(60);
   const [isSentCode, setIsSentCode] = useState(false);
   const modalRef = useRef(null);
@@ -21,17 +36,21 @@ const ResetPassword = ({ className, setCurrentModal, ...rest }: Props) => {
 
   useOnClickOutside(modalRef, () => setRegisterModalAtom({ isShown: false }));
 
-  const requestOtpCode = () => {
-    intervalRef.current = setInterval(() => {
-      setWaitCounter((count) => count - 1);
-    }, 1000);
-    setIsSentCode(true);
+  const requestOtpCode = async () => {
+    const requested = await onResetPasswordRequest(email);
+
+    if (requested) {
+      intervalRef.current = setInterval(() => {
+        setWaitCounter((count) => count - 1);
+      }, 1000);
+      setIsSentCode(true);
+    }
   };
 
   useEffect(() => {
     if (waitCounter <= 0) {
       clearInterval(intervalRef.current);
-      setIsSentCode(false);
+      setWaitCounter(60);
     }
   }, [waitCounter]);
 
@@ -91,15 +110,35 @@ const ResetPassword = ({ className, setCurrentModal, ...rest }: Props) => {
               type='password'
               name='password'
               id='password'
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
               placeholder='new password'
               className='w-full dark:text-white dark:bg-dark-primary-300 px-4 py-3 shadow mb-4 focus:outline-dark-secondary-200'
             />
-            <button
-              type='submit'
-              className='w-full py-4 text-lg font-bold capitalize rounded-md dark:bg-dark-secondary-200 mt-8 mb-4 hover:brightness-75'
-            >
-              send reset password
-            </button>
+            {isSuccess && (
+              <span className='flex items-center justify-center gap-3 font-semibold text-lg text-center text-emerald-500'>
+                <FaCircleCheck />
+                password reset success
+              </span>
+            )}
+            {!isSuccess && (
+              <button
+                type='button'
+                className='w-full py-4 text-lg font-bold capitalize rounded-md dark:bg-dark-secondary-200 mt-8 mb-4 hover:brightness-75'
+                onClick={() => onResetPassword(password, otpCode)}
+                disabled={isPending}
+              >
+                {isPending ? (
+                  <span
+                    className={
+                      'inline-block w-7 h-7 border-4 dark:border-dark-primary-200 dark:border-l-transparent rounded-full animate-spin'
+                    }
+                  ></span>
+                ) : (
+                  'send reset password'
+                )}
+              </button>
+            )}
           </span>
         </div>
       )}
