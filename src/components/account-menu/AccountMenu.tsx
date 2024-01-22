@@ -10,7 +10,7 @@ type Props = {
   className: string;
   email: string | undefined;
   fullName: string | undefined;
-  profileImageUrl: string | undefined;
+  profileImageUrl: string | null;
   isPending: boolean;
   onLogout: MouseEventHandler;
 };

@@ -1,10 +1,11 @@
+import Image from 'next/image';
 import React from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
 
 const Search = () => {
   return (
     <div className='relative w-[32rem] flex flex-col items-start justify-start gap-2 max-md:order-3 max-md:w-full'>
-      <form className='flex items-center w-full shadow rounded-md overflow-hidden justify-center dark:bg-dark-primary-300 mx-3 border-b border-transparent focus-within:border-dark-secondary-200'>
+      <form className='flex items-center w-full shadow rounded-md overflow-hidden justify-center dark:bg-dark-primary-300 mx-8 border-b border-transparent focus-within:border-dark-secondary-200'>
         <input
           type='search'
           name='search-items'
@@ -38,7 +39,13 @@ const SearchResult = ({ data, isSuccess }: SearchResultProps) => {
           {data?.map((item, idx) => (
             <li key={idx} className='flex items-center justify-start gap-5'>
               <figure className='w-12 overflow-hidden'>
-                <img src='https://picsum.photos/80' className='max-w-full object-cover object-center' alt='app-image' />
+                <Image
+                  src='https://picsum.photos/80'
+                  width={45}
+                  height={48}
+                  className='max-w-full object-cover object-center'
+                  alt='app-image'
+                />
               </figure>
               <span className='flex flex-col'>
                 <b className='dark:text-white capitalize'>app name</b>

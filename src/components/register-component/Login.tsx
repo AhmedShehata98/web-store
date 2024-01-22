@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useRef, useState } from 'react';
+import React, { HTMLAttributes, useRef } from 'react';
 import Logo from '../Logo';
 import clsx from 'clsx';
 import { useOnClickOutside } from 'usehooks-ts';

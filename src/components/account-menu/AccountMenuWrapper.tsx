@@ -17,7 +17,7 @@ function AccountMenuWrapper() {
   const queryClient = useQueryClient();
   const setUserData = useSetRecoilState(userDataAtom);
   const handleLogout = () => {
-    logout().then(() => {
+    mutateLogout().then(() => {
       queryClient.invalidateQueries({ queryKey: ['user-profile'] });
       setUserData({ isLoggedIn: false, isPendingProfileData: false, isSuccessProfileData: false, userData: undefined });
       setShowAccountMenu({ showAccountMenu: false });

@@ -11,24 +11,22 @@ export function useAverageColor({ imageElement }: Props) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [averageColor, setAverageColor] = useState<FastAverageColorResult>();
 
-  async function getAverageColor() {
-    return fac.current.getColorAsync(imageElement);
+  async function getAverageColor(imageElement: HTMLImageElement | null) {
+    try {
+      const colors = await fac.current.getColorAsync(imageElement);
+      setAverageColor(colors);
+      setIsSuccess(true);
+      setIsError(false);
+    } catch (error) {
+      setIsSuccess(false);
+      setIsError(true);
+    }
   }
 
   useEffect(() => {
     if (!imageElement) return;
-    getAverageColor()
-      .then((color) => {
-        setIsSuccess(true);
-        setIsError(false);
-        setAverageColor(color);
-      })
-      .catch((reason) => {
-        setIsSuccess(false);
-        setIsError(true);
-        console.log(reason);
-      });
-  }, [imageElement]);
+    getAverageColor(imageElement);
+  }, [imageElement, fac.current]);
 
   return { isError, isSuccess, averageColor };
 }

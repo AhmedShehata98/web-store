@@ -1,14 +1,14 @@
 @tailwind base;
 @layer base {
-  body::-webkit-scrollbar {
-    width: 18px;
+  ::-webkit-scrollbar {
+    width: 12px;
   }
-  body::-webkit-scrollbar-track {
-    @apply dark:bg-slate-400;
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-primary-300;
   }
 
-  body::-webkit-scrollbar-thumb {
-    @apply dark:bg-dark-secondary-100;
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-secondary-100 rounded-lg;
   }
 }
 @tailwind components;

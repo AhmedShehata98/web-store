@@ -1,13 +1,11 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import RegisterBtn from '@/components/RegisterBtn';
 import AccountMenuWrapper from './account-menu/AccountMenuWrapper';
 import Avatar from '@/components/Avatar';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { accountMenuAtom } from '@/atoms/account-menu';
 import { registerModalAtom } from '@/atoms/register-modal';
-import { useQuery } from '@tanstack/react-query';
-import { getProfileData } from '@/services/user.api';
 import { userDataAtom } from '@/atoms/userData.atom';
 
 function AccountButtonsWrapper() {

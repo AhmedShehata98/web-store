@@ -13,15 +13,15 @@ const ItemImage = forwardRef<HTMLElement, Props>(function ItemImage({ iconUrl, c
     imageElement: imageRef.current,
   });
   const [intersectionImageRef, isInView] = useInView();
-  const enhanceBackgroundBlackColor = (color: string) => {
-    if (color.startsWith('rgba(0, 0, 0,')) {
-      // color.replace(color.charAt(7), "3");
-      // color.replace(color.charAt(8), "3");
-      console.log(color.split(','));
-      return color;
-    }
-    return color;
-  };
+  // const enhanceBackgroundBlackColor = (color: string) => {
+  //   if (color.startsWith('rgba(0, 0, 0,')) {
+  //     // color.replace(color.charAt(7), "3");
+  //     // color.replace(color.charAt(8), "3");
+  //     console.log(color.split(','));
+  //     return color;
+  //   }
+  //   return color;
+  // };
 
   return (
     <figure
