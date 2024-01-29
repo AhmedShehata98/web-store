@@ -1,7 +1,7 @@
 'use client';
 import { registerModalAtom } from '@/atoms/register-modal';
 import React, { useState } from 'react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import Login from './Login';
 import Signup from './Signup';
 import clsx from 'clsx';
@@ -34,7 +34,7 @@ const RegisterModalWrapper = () => {
     mutationKey: ['sign-up'],
     mutationFn: signup,
   });
-  const { mutateAsync: mutateRequestResetPassword, isPending: isPendingRequestResetPassword } = useMutation({
+  const { mutateAsync: mutateRequestResetPassword } = useMutation({
     mutationKey: ['request-reset-password'],
     mutationFn: requestResetPassword,
   });
@@ -113,7 +113,7 @@ const RegisterModalWrapper = () => {
           setCurrentModal={setCurrentModal}
           closeModal={() => setRegisterModalAtom({ isShown: false })}
           onSubmit={handleLoginSubmit}
-          error={errorLogin?.message!}
+          error={errorLogin ? errorLogin?.message : undefined}
           isError={isErrorLogin}
           inPending={inPendingLogin}
         />
@@ -123,7 +123,7 @@ const RegisterModalWrapper = () => {
           setCurrentModal={setCurrentModal}
           closeModal={() => setRegisterModalAtom({ isShown: false })}
           onSubmit={handleSignUpSubmit}
-          error={errorSignup?.message!}
+          error={errorSignup ? errorSignup?.message : undefined}
           isError={isErrorSignup}
           inPending={isPendingSignup}
         />

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import '@/styles/globals.css';
 import PrimaryLayout from '@/layout/primary-layout/PrimaryLayout';
 import RecoilWrapper from '@/lib/RecoilWrapper';
 import RegisterModalWrapper from '@/components/register-component/RegisterModalWrapper';
 import ReactQueryWrapper from '@/lib/ReactQueryWrapper';
 import UserDataWrapper from '@/lib/UserDataWrapper';
+import CreateAppModalWrapper from '@/layout/primary-layout/header/CreateAppModalWrapper';
 
-const inter = Inter({ subsets: ['latin'] });
+const lato = Lato({ weight: ['100', '300', '400', '700', '900'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Web store',
@@ -17,12 +18,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className='dark'>
-      <body className={inter.className}>
+      <body className={lato.className}>
         <ReactQueryWrapper>
           <RecoilWrapper>
             <UserDataWrapper>
               <PrimaryLayout>{children}</PrimaryLayout>
               <RegisterModalWrapper />
+              <CreateAppModalWrapper />
+              <div id='modal'></div>
             </UserDataWrapper>
           </RecoilWrapper>
         </ReactQueryWrapper>

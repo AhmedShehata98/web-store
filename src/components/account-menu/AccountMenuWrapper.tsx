@@ -17,7 +17,7 @@ function AccountMenuWrapper() {
   const queryClient = useQueryClient();
   const setUserData = useSetRecoilState(userDataAtom);
   const handleLogout = () => {
-    logout().then(() => {
+    mutateLogout().then(() => {
       queryClient.invalidateQueries({ queryKey: ['user-profile'] });
       setUserData({ isLoggedIn: false, isPendingProfileData: false, isSuccessProfileData: false, userData: undefined });
       setShowAccountMenu({ showAccountMenu: false });
@@ -28,9 +28,9 @@ function AccountMenuWrapper() {
       className={clsx({
         'scale-95 translate-y-4 opacity-0 pointer-events-none': !showAccountMenu,
       })}
-      fullName={userData?.fullName}
-      profileImageUrl={userData?.profileImageUrl!}
-      email={userData?.email}
+      fullName={userData ? (userData.fullName as string) : 'N A'}
+      profileImageUrl={userData ? userData.profileImageUrl : null}
+      email={userData ? userData.email : undefined}
       onLogout={handleLogout}
       isPending={isPendingLogout}
     />

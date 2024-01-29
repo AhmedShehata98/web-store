@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useRef, useState } from 'react';
+import React, { HTMLAttributes, useRef } from 'react';
 import Logo from '../Logo';
 import clsx from 'clsx';
 import { useOnClickOutside } from 'usehooks-ts';
@@ -8,7 +8,7 @@ type Props = HTMLAttributes<HTMLFormElement> & {
   setCurrentModal: React.Dispatch<React.SetStateAction<ModalTargetType>>;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   closeModal: () => void;
-  error: string;
+  error: string | undefined;
   isError: boolean;
   inPending: boolean;
 };

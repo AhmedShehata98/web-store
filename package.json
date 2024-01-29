@@ -1,6 +1,6 @@
 {
   "name": "web-store",
-  "version": "0.4",
+  "version": "0.7",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -14,11 +14,13 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@smastrom/react-rating": "^1.4.0",
     "@tanstack/react-query": "^5.17.0",
     "axios": "^1.6.3",
     "clsx": "^2.1.0",
     "fast-average-color": "^9.4.0",
     "js-cookie": "^3.0.5",
+    "nanoid": "^5.0.4",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
@@ -41,6 +43,7 @@
     "@storybook/nextjs": "^7.6.7",
     "@storybook/react": "^7.6.7",
     "@storybook/test": "^7.6.7",
+    "@types/eslint": "^8.56.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

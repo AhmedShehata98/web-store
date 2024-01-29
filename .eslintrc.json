@@ -9,6 +9,8 @@
   "rules": {
     "jsx-a11y/alt-text": "off",
     "react-hooks/exhaustive-deps": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-useless-catch": "off"
   }
 }

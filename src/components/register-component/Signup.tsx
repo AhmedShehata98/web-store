@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import React, { HTMLAttributes, useRef } from 'react';
 import Logo from '../Logo';
-import { useSetRecoilState } from 'recoil';
-import { registerModalAtom } from '@/atoms/register-modal';
 import { useOnClickOutside } from 'usehooks-ts';
 import { ModalTargetType } from './RegisterModalWrapper';
 
@@ -10,7 +8,7 @@ type Props = HTMLAttributes<HTMLFormElement> & {
   setCurrentModal: React.Dispatch<React.SetStateAction<ModalTargetType>>;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   closeModal: () => void;
-  error: string;
+  error: string | undefined;
   inPending: boolean;
   isError: boolean;
 };

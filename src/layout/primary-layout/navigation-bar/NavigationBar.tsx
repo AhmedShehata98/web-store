@@ -7,9 +7,14 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import { LuHome } from 'react-icons/lu';
 import { TbCategory } from 'react-icons/tb';
+import { FaRegPlusSquare } from 'react-icons/fa';
+import { useSetRecoilState } from 'recoil';
+import { publishAppModalAtom } from '@/atoms/publish-app-modal';
 
 const NavigationBar = () => {
   const pathname = usePathname();
+  const setIsShownAppModal = useSetRecoilState(publishAppModalAtom);
+
   return (
     <div className='mobile-navigation-bar'>
       <ul className='w-full flex items-center justify-center gap-4'>
@@ -20,6 +25,20 @@ const NavigationBar = () => {
             icon={<LuHome />}
             isActive={Boolean(pathname)}
           />
+        </li>
+        <li className='flex items-center justify-center'>
+          <button
+            type='button'
+            className='relative flex flex-col justify-center items-center w-16 h-16 gap-1 rounded-md'
+            onClick={() => setIsShownAppModal(true)}
+          >
+            <span className='flex items-center justify-center rounded-full text-3xl dark:text-slate-400'>
+              <FaRegPlusSquare />
+            </span>
+            <small className='max-w-full overflow-hidden truncate px-1 dark:text-white capitalize text-center leading-3'>
+              add
+            </small>
+          </button>
         </li>
         <li className='flex items-center justify-center'>
           <NavigationBar.NavigationLink
