@@ -1,6 +1,6 @@
 {
   "name": "web-store",
-  "version": "0.7",
+  "version": "0.8",
   "private": true,
   "workspaces": [
     "packages/*"
