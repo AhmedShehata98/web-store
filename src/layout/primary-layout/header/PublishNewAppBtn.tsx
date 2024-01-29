@@ -2,11 +2,13 @@
 import React from 'react';
 import { publishAppModalAtom } from '@/atoms/publish-app-modal';
 import { IoAddCircleOutline } from 'react-icons/io5';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { userDataAtom } from '@/atoms/userData.atom';
 
 const PublishNewAppBtn = () => {
   const setIsShownAppModal = useSetRecoilState(publishAppModalAtom);
-
+  const { isLoggedIn } = useRecoilValue(userDataAtom);
+  if (!isLoggedIn) return null;
   return (
     <button
       type='button'

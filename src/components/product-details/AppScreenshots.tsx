@@ -12,9 +12,15 @@ import 'swiper/css/mousewheel';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 type Props = {
-  imagesList: Array<string>;
+  imagesList: Array<{
+    _id: string;
+    url: string;
+    width: number;
+    height: number;
+  }>;
+  isLoading: boolean;
 };
-const AppScreenshots = ({ imagesList }: Props) => {
+const AppScreenshots = ({ imagesList, isLoading }: Props) => {
   const isMatchMedium = useMediaQuery('(max-width:576px)');
 
   return (
@@ -28,28 +34,36 @@ const AppScreenshots = ({ imagesList }: Props) => {
         </button>
       </span>
       <div className='w-full h-[525px] max-md:h-[250px] p-5'>
-        <Swiper
-          spaceBetween={18}
-          slidesPerView={isMatchMedium ? 1 : 1.2}
-          pagination={true}
-          mousewheel={true}
-          loop={true}
-          className='relative w-full h-full py-3'
-          modules={[Pagination, A11y, Mousewheel, Autoplay, EffectFlip]}
-        >
-          {imagesList &&
-            imagesList.map((image, idx) => (
-              <SwiperSlide key={idx} className='w-full rounded-lg shadow-md overflow-hidden'>
-                <Image
-                  width={450}
-                  height={250}
-                  src={image}
-                  alt={`slide-${idx}`}
-                  className='w-full h-full object-cover object-center'
-                />
-              </SwiperSlide>
-            ))}
-        </Swiper>
+        {isLoading && (
+          <>
+            <span className='inline-block w-3/4 max-md:w-full h-full dark:bg-dark-primary-400 animate-pulse me-4'></span>
+            <span className='inline-block w-1/4 max-md:w-full h-full dark:bg-dark-primary-400 animate-pulse'></span>
+          </>
+        )}
+        {!isLoading && (
+          <Swiper
+            spaceBetween={18}
+            slidesPerView={isMatchMedium ? 1 : 1.1}
+            pagination={true}
+            mousewheel={true}
+            loop={true}
+            className='relative w-full h-full py-3'
+            modules={[Pagination, A11y, Mousewheel, Autoplay, EffectFlip]}
+          >
+            {imagesList &&
+              imagesList.map((image, idx) => (
+                <SwiperSlide key={image._id} className='w-full rounded-lg shadow-md overflow-hidden'>
+                  <Image
+                    width={image.width}
+                    height={image.height}
+                    src={image.url}
+                    alt={`slide-${idx}`}
+                    className='w-full h-full object-cover object-center'
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        )}
       </div>
     </div>
   );

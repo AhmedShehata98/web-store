@@ -16,7 +16,7 @@ type Props = {
 };
 const SlideItem = ({ data: { btnLink, description, image, title } }: Props) => {
   const imageElementRef = useRef<HTMLImageElement | null>(null);
-  const { isSuccess, averageColor } = useAverageColor({ imageElement: imageElementRef.current });
+  const { averageColor } = useAverageColor({ imageElement: imageElementRef.current });
 
   return (
     <>

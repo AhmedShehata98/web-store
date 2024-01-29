@@ -39,7 +39,7 @@ const SwiperSlider = ({ data, isFetched }: Props) => {
     >
       {isFetched &&
         data.map((slide, idx) => (
-          <SwiperSlide className='relative rounded-xl shadow-lg px-4 py-2'>
+          <SwiperSlide key={idx} className='relative rounded-xl shadow-lg px-4 py-2'>
             <SlideItem
               key={idx}
               data={{

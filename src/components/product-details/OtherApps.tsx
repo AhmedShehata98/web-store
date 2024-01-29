@@ -17,10 +17,10 @@ const OtherApps = () => {
       </span>
       <ul className='w-full flex items-center justify-start gap-6 overflow-x-auto'>
         {appsList.map((app) => (
-          <VItemCard item={{ ...app }} className='shrink-0 basis-1/4' />
+          <VItemCard key={app.id} item={{ ...app }} className='shrink-0 basis-1/4' />
         ))}
         {appsList.map((app) => (
-          <VItemCard item={{ ...app }} className='shrink-0 basis-1/4' />
+          <VItemCard key={app.id} item={{ ...app }} className='shrink-0 basis-1/4' />
         ))}
       </ul>
     </div>

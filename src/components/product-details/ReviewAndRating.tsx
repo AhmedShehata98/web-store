@@ -7,6 +7,9 @@ import '@smastrom/react-rating/style.css';
 import Portal from '../Portal';
 import AddReviewModal from './AddReviewModal';
 
+// type Props = {
+//   isLoading: boolean;
+// };
 const ReviewAndRating = () => {
   const [rate, setRate] = useState(1);
   const [isShownReviewModal, setIsShownReviewModal] = useState(false);
@@ -25,7 +28,7 @@ const ReviewAndRating = () => {
         <Rating value={rate} onChange={setRate} style={{ width: 140 }} />
         <button
           type='button'
-          className='px-3 py-2 dark:bg-dark-primary-200 dark:brightness-150 shadow-lg rounded-md dark:text-white capitalize'
+          className='px-3 py-2 dark:bg-dark-primary-400 dark:brightness-150 shadow-lg rounded-md dark:text-white capitalize'
           onClick={() => setIsShownReviewModal(true)}
         >
           write a review
@@ -33,7 +36,7 @@ const ReviewAndRating = () => {
       </div>
       {isShownReviewModal && (
         <Portal id='modal'>
-          <AddReviewModal closeModal={() => setIsShownReviewModal(false)} />
+          <AddReviewModal closeModal={() => setIsShownReviewModal(false)} setRate={setRate} rate={rate} />
         </Portal>
       )}
     </div>

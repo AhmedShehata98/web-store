@@ -6,7 +6,7 @@ import RecoilWrapper from '@/lib/RecoilWrapper';
 import RegisterModalWrapper from '@/components/register-component/RegisterModalWrapper';
 import ReactQueryWrapper from '@/lib/ReactQueryWrapper';
 import UserDataWrapper from '@/lib/UserDataWrapper';
-import CreateAppWrapper from '@/layout/primary-layout/header/CreateAppWrapper';
+import CreateAppModalWrapper from '@/layout/primary-layout/header/CreateAppModalWrapper';
 
 const lato = Lato({ weight: ['100', '300', '400', '700', '900'], subsets: ['latin'] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <UserDataWrapper>
               <PrimaryLayout>{children}</PrimaryLayout>
               <RegisterModalWrapper />
-              <CreateAppWrapper />
+              <CreateAppModalWrapper />
               <div id='modal'></div>
             </UserDataWrapper>
           </RecoilWrapper>

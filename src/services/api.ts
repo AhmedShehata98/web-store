@@ -16,6 +16,17 @@ export const ENDPOINTS = {
   user: {
     profile: '/api/users/profile',
   },
+  application: {
+    all: '/api/application/all',
+    root: '/api/application',
+  },
+  categories: {
+    all: '/api/category/all',
+    root: '/api/category',
+  },
+  upload: {
+    images: '/api/upload/images',
+  },
 };
 
 export const WEB_STORE = axios.create({

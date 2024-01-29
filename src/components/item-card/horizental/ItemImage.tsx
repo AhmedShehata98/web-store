@@ -9,7 +9,7 @@ const ItemImage = ({ iconUrl, ...rest }: Props) => {
     <figure className='flex items-center justify-center w-28 max-md:w-16 aspect-square overflow-hidden rounded-md'>
       <Image
         {...rest}
-        className='!min-w-full object-cover object-center'
+        className='w-full object-cover object-center aspect-square'
         src={iconUrl}
         width={64}
         height={64}

@@ -33,7 +33,7 @@ function AccountButtonsWrapper() {
           username={profileData?.fullName || 'N A'}
           isLoading={isPendingProfileData}
           isSuccess={isSuccessProfileData}
-          profileImg={profileData?.profileImageUrl!}
+          profileImg={profileData ? profileData?.profileImageUrl : null}
           onClick={handleShowAccountMenu}
         />
       )}

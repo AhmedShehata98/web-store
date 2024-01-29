@@ -1,6 +1,9 @@
+import Link from 'next/link';
 import React, { ReactNode } from 'react';
-import { BsBox } from 'react-icons/bs';
 import { RiProfileLine } from 'react-icons/ri';
+import { GrLinkedin } from 'react-icons/gr';
+import { FaGithub } from 'react-icons/fa';
+import clsx from 'clsx';
 
 type Props = {
   data: {
@@ -13,6 +16,7 @@ type Props = {
     };
     technologiesAndLibraries: Array<string>;
   };
+  isLoading: boolean;
 };
 const AdditionalInformation = ({ data }: Props) => {
   return (
@@ -31,17 +35,27 @@ const AdditionalInformation = ({ data }: Props) => {
           <p className='flex flex-col text-slate-400 ps-8'>{data.releaseDate}</p>
         </InfoItem>
         <InfoItem title='publisher Info' icon={<RiProfileLine />}>
-          <ul className='flex flex-col mt-3'>
-            <a className='text-sky-500 text-sm ps-6 mb-1 uppercase' href={data.publisherInfo.linkedIn}>
-              linkedIn
-            </a>
-            <a className='text-sky-500 text-sm ps-6 mb-1 uppercase' href={data.publisherInfo.github}>
-              github
-            </a>
+          <ul className='flex flex-col mt-4'>
+            <Link className='flex items-center justify-start gap-3 ps-6 mb-3' href={data.publisherInfo.linkedIn}>
+              <span className='text-[#0A66C2] text-2xl'>
+                <GrLinkedin />
+              </span>
+              <p className='text-sky-500 text-sm uppercase'>linkedIn</p>
+            </Link>
+            <Link className='flex items-center justify-start gap-3 ps-6 mb-3' href={data.publisherInfo.github}>
+              <span className='dark:text-slate-200 text-slate-800 text-2xl'>
+                <FaGithub />
+              </span>
+              <p className='text-sky-500 text-sm uppercase'>github</p>
+            </Link>
           </ul>
         </InfoItem>
         <InfoItem title='technologies And Libraries' icon={<RiProfileLine />}>
-          <ul className='grid grid-flow-row mt-3 ps-2'>
+          <ul
+            className={`grid ${clsx(
+              data.technologiesAndLibraries.length >= 6 ? 'grid-cols-2' : 'grid-flow-row',
+            )} mt-3 ps-2`}
+          >
             {data.technologiesAndLibraries.map((tech: string) => (
               <li key={tech} className='text-slate-400 text-sm ps-6 mb-1 uppercase'>
                 {tech}

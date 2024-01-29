@@ -8,7 +8,7 @@ type Props = HTMLAttributes<HTMLFormElement> & {
   setCurrentModal: React.Dispatch<React.SetStateAction<ModalTargetType>>;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   closeModal: () => void;
-  error: string;
+  error: string | undefined;
   inPending: boolean;
   isError: boolean;
 };
