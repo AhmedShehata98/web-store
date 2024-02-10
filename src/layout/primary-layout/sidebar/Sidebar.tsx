@@ -14,7 +14,7 @@ const Sidebar = () => {
       <ul className='w-full grid grid-flow-row gap-2 p-2'>
         <Sidebar.SidebarLink
           href={'/'}
-          isActive={Boolean(pathname)}
+          isActive={Boolean(pathname.endsWith('/'))}
           icon={
             <span className='text-3xl dark:text-slate-400'>
               <LuHome />

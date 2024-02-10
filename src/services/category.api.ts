@@ -17,3 +17,14 @@ export async function getAllCategories({
     throw error;
   }
 }
+
+export async function getCategoryById(id: string | undefined): Promise<ICategory> {
+  try {
+    const { data } = await WEB_STORE({
+      url: `${ENDPOINTS.categories.root}/${id}`,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

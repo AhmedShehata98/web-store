@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import VItemCard from '../item-card/vertical/VItemCard';
 import { PAID_APP_LIST } from 'local-constants';
 import Link from 'next/link';
+import SkeletonVCard from '../item-card/vertical/SkeletonVCard';
 
 const OtherApps = () => {
   const [appsList] = useState(PAID_APP_LIST);
@@ -17,11 +18,11 @@ const OtherApps = () => {
       </span>
       <ul className='w-full flex items-center justify-start gap-6 overflow-x-auto'>
         {appsList.map((app) => (
-          <VItemCard key={app.id} item={{ ...app }} className='shrink-0 basis-1/4' />
+          <VItemCard key={app._id} item={app as any} className='shrink-0 basis-1/4' href={'#'} />
         ))}
-        {appsList.map((app) => (
-          <VItemCard key={app.id} item={{ ...app }} className='shrink-0 basis-1/4' />
-        ))}
+        {/* {['1', '2', '3', '4', '5', '6'].map((app) => (
+          <SkeletonVCard key={app} className='shrink-0 basis-1/4' />
+        ))} */}
       </ul>
     </div>
   );

@@ -9,7 +9,7 @@ const TopPaidAppsWrapper = () => {
     <div className='w-full flex items-start justify-start gap-2 mb-8'>
       <ul className='w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7 gap-y-5'>
         {appsList.map((app) => (
-          <VItemCard key={app.id} item={app} />
+          <VItemCard key={app._id} item={app as any} href={'#'} />
         ))}
       </ul>
     </div>

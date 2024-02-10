@@ -19,17 +19,13 @@ const TopFreeAppsWrapper = () => {
   return (
     <div className='w-full flex items-start justify-start gap-2 mb-8'>
       <ul className='w-full grid sm:grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-5'>
-        {!isLoadingAppsList &&
-          isFetchedAppsList &&
+        {isFetchedAppsList &&
           appsList &&
-          appsList.application.map((app) => (
+          appsList.applications.map((app) => (
             <ItemCard
               key={app._id}
               href={{
-                pathname: `${ROUTES_LIST.appDetails}/${app._id}`,
-                query: {
-                  app: app.title,
-                },
+                pathname: `${ROUTES_LIST.appDetails}/${app.shortId}`,
               }}
               item={app}
             />
