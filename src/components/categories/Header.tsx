@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, SelectHTMLAttributes } from 'react';
+import React, { SelectHTMLAttributes } from 'react';
 import { IoFilterSharp } from 'react-icons/io5';
 import { IoIosArrowDown } from 'react-icons/io';
 import clsx from 'clsx';

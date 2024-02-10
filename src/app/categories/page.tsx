@@ -1,6 +1,4 @@
 import CategoriesListWrapper from '@/components/categories/CategoriesListWrapper';
-import CategoryCard from '@/components/categories/CategoryCard';
-import Header from '@/components/categories/Header';
 import SectionHeading from '@/components/home/section-heading/SectionHeading';
 import { getAllCategories } from '@/services/category.api';
 import { HydrationBoundary, QueryClient } from '@tanstack/react-query';

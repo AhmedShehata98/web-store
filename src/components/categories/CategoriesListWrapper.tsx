@@ -6,11 +6,7 @@ import React, { FC } from 'react';
 import CategoryCard from './CategoryCard';
 
 const CategoriesListWrapper: FC = () => {
-  const {
-    data: categoriesList,
-    isLoading,
-    isFetched,
-  } = useQuery({
+  const { data: categoriesList, isFetched } = useQuery({
     queryKey: ['categories'],
     queryFn: () => getAllCategories({ limit: 17, page: 1 }),
   });

@@ -16,6 +16,7 @@ const VItemCard = forwardRef<HTMLAnchorElement, Props>(function VItemCard({ item
 
   return (
     <Link
+      ref={ref}
       href={href}
       {...rest}
       className={`w-full dark:bg-dark-primary-200 brightness-150 rounded-lg shadow-lg group ${clsx(className)}`}

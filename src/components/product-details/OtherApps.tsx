@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import VItemCard from '../item-card/vertical/VItemCard';
 import { PAID_APP_LIST } from 'local-constants';
 import Link from 'next/link';
-import SkeletonVCard from '../item-card/vertical/SkeletonVCard';
+// import SkeletonVCard from '../item-card/vertical/SkeletonVCard';
 
 const OtherApps = () => {
   const [appsList] = useState(PAID_APP_LIST);
