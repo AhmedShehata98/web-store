@@ -7,13 +7,14 @@ import OtherApps from '@/components/product-details/OtherApps';
 import ReviewAndRating from '@/components/product-details/ReviewAndRating';
 import { getApplicationById } from '@/services/app.api';
 import { useQuery } from '@tanstack/react-query';
-import { useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const AppDetails = () => {
-  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const appId = pathname.split('/').pop();
   const { data: appDetails, isLoading } = useQuery({
-    queryKey: ['application-details'],
-    queryFn: () => getApplicationById(searchParams.get('_id') as string),
+    queryKey: ['application-details', appId],
+    queryFn: () => getApplicationById(appId as string),
   });
 
   return (

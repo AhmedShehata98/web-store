@@ -28,9 +28,18 @@ type UserType = {
   createdAt: string;
   updatedAt: string;
 };
-
+interface IReview {
+  _id: string;
+  user: IUser;
+  rate: number;
+  comment: string;
+  itemId: string;
+  createdAt: string;
+  updatedAt: string;
+}
 interface IApplication {
   _id: string;
+  shortId: string;
   title: string;
   description: string;
   thumbnail: string;
@@ -40,7 +49,7 @@ interface IApplication {
     width: number;
     height: number;
   }>;
-  review: IReview;
+  review: IReview[];
   category: ICategory;
   developer: UserType;
   demoUrl: string;
@@ -52,14 +61,14 @@ interface IApplication {
 
 type CreateAppFormType = Omit<
   IApplication,
-  '_id' | 'createdAt' | 'updatedAt' | 'review' | 'images' | 'category' | 'developer'
+  '_id' | 'createdAt' | 'updatedAt' | 'review' | 'images' | 'category' | 'developer' | 'shortId'
 > & {
   category: string;
   images: Partial<UploadResponse>[];
 };
 
 type ApplicationsResponseType = {
-  application: IApplication[];
+  applications: IApplication[];
   total: number;
   currentPage: number;
   limit: number;
@@ -68,6 +77,7 @@ interface ICategory {
   _id: string;
   name: string;
   description: string;
+  shortId: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -88,4 +98,11 @@ type UploadResponse = {
   height: number;
   format: string;
   created_at: string;
+};
+
+type ApplicationsResponseType = {
+  applications: IApplication;
+  count: number;
+  page: number;
+  limit: number;
 };

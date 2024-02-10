@@ -19,6 +19,7 @@ export const ENDPOINTS = {
   application: {
     all: '/api/application/all',
     root: '/api/application',
+    byCategory: '/api/application/category',
   },
   categories: {
     all: '/api/category/all',

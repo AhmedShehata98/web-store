@@ -98,7 +98,7 @@ const PublishNewAppModal = ({
         )}`}
       >
         {isPublishedApplication && (
-          <div className='absolute inset-0 w-full h-full flex flex-col gap-12 items-center justify-center dark:bg-dark-primary-200 dark:bg-opacity-95'>
+          <div className='absolute z-10 inset-0 w-full h-full flex flex-col gap-12 items-center justify-center dark:bg-dark-primary-200 dark:bg-opacity-95'>
             <Image src='/congratulation.png' width={128} height={128} alt='congratulation.png' />
             <span className='flex flex-col gap-5 items-center justify-center px-24'>
               <h5 className='text-2xl capitalize dark:text-slate-200 font-bold text-center'>
@@ -171,7 +171,11 @@ const PublishNewAppModal = ({
             </button>
           </span>
           <span className='w-full flex items-center justify-center gap-4'>
-            <Button type='reset' className='w-1/2 dark:!bg-red-500 shadow-md rounded-md' disabled={isPendingPublishApp}>
+            <Button
+              type='reset'
+              className='w-1/2 dark:!bg-red-500 shadow-md rounded-md'
+              disabled={isPendingPublishApp || isPendingUpload}
+            >
               <span className='text-3xl'>
                 <MdCleaningServices />
               </span>
@@ -180,7 +184,7 @@ const PublishNewAppModal = ({
             <Button
               type='submit'
               className='w-1/2 dark:!bg-dark-secondary-200 shadow-md rounded-md'
-              disabled={isPendingPublishApp}
+              disabled={isPendingPublishApp || isPendingUpload}
             >
               <span className='text-3xl'>
                 <IoSend />

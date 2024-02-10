@@ -72,3 +72,22 @@ export async function updateApplication({
     throw error;
   }
 }
+export async function getApplicationsByCategory({
+  categoryId,
+  limit,
+  page,
+}: {
+  categoryId: string;
+  limit: number;
+  page: number;
+}): Promise<ApplicationsResponseType> {
+  try {
+    const { data } = await WEB_STORE({
+      url: `${ENDPOINTS.application.byCategory}/${categoryId}`,
+      params: { limit, page },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
