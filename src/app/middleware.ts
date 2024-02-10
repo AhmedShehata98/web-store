@@ -6,7 +6,7 @@ export function middleware() {
   const origin = process.env.NODE_ENV !== 'production' ? 'https://web-store-apps.vercel.app' : 'http://localhost:3000';
   // add the CORS headers to the response
   res.headers.append('Access-Control-Allow-Credentials', 'true');
-  res.headers.append('Access-Control-Allow-Origin', origin); // replace this your actual origin
+  res.headers.append('Access-Control-Allow-Origin', '*'); // replace this your actual origin
   res.headers.append('Access-Control-Allow-Methods', 'GET,DELETE,PATCH,POST,PUT');
   res.headers.append(
     'Access-Control-Allow-Headers',
