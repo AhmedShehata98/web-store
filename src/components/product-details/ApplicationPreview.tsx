@@ -108,7 +108,7 @@ ApplicationPreview.RatingCount = RatingCount;
 
 function ApplicationThumbnail({ thumbnail }: { thumbnail: string }) {
   return (
-    <figure className='w-48 max-md:w-56 mb-4 pb-2'>
+    <figure className='w-32 max-md:w-56 mb-4 pb-2'>
       <Image
         src={thumbnail}
         alt=''

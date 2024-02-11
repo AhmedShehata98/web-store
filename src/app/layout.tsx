@@ -22,7 +22,8 @@ export const viewport: Viewport = {
   themeColor: '#219C90',
   userScalable: true,
   viewportFit: 'cover',
-  interactiveWidget: 'overlays-content',
+  interactiveWidget: 'resizes-content',
+  initialScale: 0.75,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -31,12 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={lato.className}>
         <ReactQueryWrapper>
           <RecoilWrapper>
-            <UserDataWrapper>
-              <PrimaryLayout>{children}</PrimaryLayout>
-              <RegisterModalWrapper />
-              <CreateAppModalWrapper />
-              <div id='modal'></div>
-            </UserDataWrapper>
+            <UserDataWrapper />
+
+            <PrimaryLayout>{children}</PrimaryLayout>
+            <RegisterModalWrapper />
+            <CreateAppModalWrapper />
+            <div id='modal'></div>
           </RecoilWrapper>
         </ReactQueryWrapper>
       </body>
