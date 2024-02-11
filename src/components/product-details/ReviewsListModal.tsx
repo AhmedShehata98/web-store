@@ -1,5 +1,5 @@
 import { deleteReview, getAllReviews } from '@/services/reviews.api';
-import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import { usePathname } from 'next/navigation';
 import React, { useRef, useState } from 'react';
 import ReviewItem from './ReviewItem';
@@ -15,7 +15,6 @@ const ReviewsListModal = ({ closeModal }: Props) => {
   useOnClickOutside(modalRef, closeModal);
   const pathname = usePathname();
   const [applicationId] = useState(() => pathname.split('/').pop());
-  const queryClient = useQueryClient();
   const { mutateAsync: mutateDeleteReview } = useMutation({
     mutationKey: ['delete-review'],
     mutationFn: deleteReview,

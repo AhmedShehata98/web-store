@@ -12,6 +12,7 @@ const ItemRating = ({ rating, ratingCount, ...rest }: Props) => {
       <span className='text-slate-300'>
         <IoIosStar />
       </span>
+      <span className='hidden'>{ratingCount}</span>
     </span>
   );
 };
