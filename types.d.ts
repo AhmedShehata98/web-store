@@ -17,6 +17,7 @@ type SignupFormType = {
 };
 
 type UserType = {
+  _id: string;
   fullName: string;
   email: string;
   profileImageUrl: string | null;
@@ -105,4 +106,30 @@ type ApplicationsResponseType = {
   count: number;
   page: number;
   limit: number;
+};
+
+type ReviewFormType = {
+  user: string;
+  rate: number;
+  comment: string;
+};
+
+type ReviewType = {
+  _id: string;
+  user: UserType;
+  rate: number;
+  applicationShortId: string;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: string;
+};
+
+type ReviewsResponseType = {
+  data: ReviewType[];
+  total: number;
+  currentPage: number;
+  limit: number;
+  remainingPages: number;
+  hasNext: boolean;
 };

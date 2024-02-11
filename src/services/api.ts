@@ -28,6 +28,11 @@ export const ENDPOINTS = {
   upload: {
     images: '/api/upload/images',
   },
+  reviews: {
+    all: '/api/review/all',
+    recent: '/api/review/recent',
+    root: '/api/review',
+  },
 };
 
 export const WEB_STORE = axios.create({

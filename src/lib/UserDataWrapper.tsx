@@ -2,11 +2,11 @@
 import { userDataAtom } from '@/atoms/userData.atom';
 import { getProfileData } from '@/services/user.api';
 import { useQuery } from '@tanstack/react-query';
-import React, { ReactNode, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
-
-const UserDataWrapper = ({ children }: { children: ReactNode }) => {
+const UserDataWrapper = () => {
   const setUserData = useSetRecoilState(userDataAtom);
+
   const {
     data: profileData,
     isPending: isPendingProfileData,
@@ -15,6 +15,7 @@ const UserDataWrapper = ({ children }: { children: ReactNode }) => {
     queryKey: ['user-profile'],
     queryFn: getProfileData,
     retry: 2,
+    refetchInterval: 500,
   });
 
   useEffect(() => {
@@ -26,7 +27,8 @@ const UserDataWrapper = ({ children }: { children: ReactNode }) => {
         userData: profileData,
       });
   }, [profileData, isSuccessProfileData, isSuccessProfileData]);
-  return <>{children}</>;
+
+  return <></>;
 };
 
 export default UserDataWrapper;
