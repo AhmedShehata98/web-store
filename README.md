@@ -20,7 +20,7 @@ Technologies & library's :
 - [ React Query ](https://tanstack.com/query/latest) - Powerful asynchronous state management for TS/JS
 
 #### Back-end 
-- [ Nest JS ](http://nestjs.com/) - [Fast, unopinionated, minimalist web framework for Node.js](https://nestjs.com/)
+- [ Nest JS ](http://nestjs.com/) - A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
 - [ Mongo DB ](https://www.mongodb.com/) - NoSQL database , document database
 
 #### deployment
