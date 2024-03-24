@@ -41,4 +41,8 @@ for running the development server
 npm run dev
 ```
 
-## Deployed on Vercel
+## developed by
+- [Ahmed Shehata](https://github.com/AhmedShehata98/) - Front-end web developer. ( front-end || back-end)
+- [Abdelrhman Kamal](https://github.com/AbdelrhmanX7) - Front-end web developer. ( front-end || back-end)
+
+
